@@ -60,16 +60,16 @@ namespace CubeView.Properties {
             }
         }
         
-        internal static byte[] phone_frag {
+        internal static byte[] phong_frag {
             get {
-                object obj = ResourceManager.GetObject("phone_frag", resourceCulture);
+                object obj = ResourceManager.GetObject("phong_frag", resourceCulture);
                 return ((byte[])(obj));
             }
         }
         
-        internal static byte[] phone_vert {
+        internal static byte[] phong_vert {
             get {
-                object obj = ResourceManager.GetObject("phone_vert", resourceCulture);
+                object obj = ResourceManager.GetObject("phong_vert", resourceCulture);
                 return ((byte[])(obj));
             }
         }

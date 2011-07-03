@@ -28,7 +28,7 @@ namespace CubeView
 		{
 			viewport.MakeCurrent();
 
-			program = CreateShader(Encoding.UTF8.GetString(Properties.Resources.phone_vert), Encoding.UTF8.GetString(Properties.Resources.phone_frag));
+			program = CreateShader(Encoding.UTF8.GetString(Properties.Resources.phong_vert), Encoding.UTF8.GetString(Properties.Resources.phong_frag));
 			cube = new Cube(program);
 		}
 
