@@ -32,6 +32,7 @@ namespace CubeView
 			cube = new Cube(program);
 		}
 
+		// レンダリング
 		public void Render()
 		{
 			viewport.MakeCurrent();
@@ -67,6 +68,7 @@ namespace CubeView
 			viewport.SwapBuffers();
 		}
 
+		// シェーダを作成
 		int CreateShader(string vertexShaderCode, string fragmentShaderCode)
 		{
 			int vshader = GL.CreateShader(ShaderType.VertexShader);

@@ -11,6 +11,7 @@ namespace CubeView
 {
 	class Cube
 	{
+		// キューブを構成する頂点要素（シェーダの頂点要素と合わせる）
 		struct Vertex
 		{
 			public Vector3 position;
@@ -63,15 +64,17 @@ namespace CubeView
 						 7,6,4
 			};
 
+			// VBO作成
 			GL.BindBuffer(BufferTarget.ArrayBuffer, vbo);
 			GL.BufferData<Vertex>(BufferTarget.ArrayBuffer, new IntPtr(v.Length * Vertex.Stride), v, BufferUsageHint.StaticDraw);
 
+			// EBO作成
 			GL.GenBuffers(1, out ebo);
 			GL.BindBuffer(BufferTarget.ElementArrayBuffer, ebo);
 			GL.BufferData<uint>(BufferTarget.ElementArrayBuffer, new IntPtr(sizeof(uint) * indices.Length), indices, BufferUsageHint.StaticDraw);
 			vertexCount = indices.Length;
 
-			//
+			// VAO作成
 			GL.GenVertexArrays(1, out vao);
 			GL.BindVertexArray(vao);
 			
@@ -85,11 +88,9 @@ namespace CubeView
 
 			GL.VertexAttribPointer(positionLocation, 3, VertexAttribPointerType.Float, false, Vertex.Stride, 0);
 			GL.VertexAttribPointer(normalLocation, 3, VertexAttribPointerType.Float, true, Vertex.Stride, Vector3.SizeInBytes);
-
-			GL.BindAttribLocation(program, positionLocation, "position");
-			GL.BindAttribLocation(program, normalLocation, "normal");
 		}
 
+		// レンダリング
 		public void Render()
 		{
 			GL.BindVertexArray(vao);
