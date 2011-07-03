@@ -1,6 +1,6 @@
 ﻿namespace CubeView
 {
-	partial class Form1
+	partial class MainForm
 	{
 		/// <summary>
 		/// 必要なデザイナー変数です。
@@ -28,27 +28,27 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.glControl1 = new OpenTK.GLControl();
+			this.viewport = new OpenTK.GLControl();
 			this.SuspendLayout();
 			// 
-			// glControl1
+			// viewport
 			// 
-			this.glControl1.BackColor = System.Drawing.Color.Black;
-			this.glControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.glControl1.Location = new System.Drawing.Point(0, 0);
-			this.glControl1.Name = "glControl1";
-			this.glControl1.Size = new System.Drawing.Size(640, 538);
-			this.glControl1.TabIndex = 0;
-			this.glControl1.VSync = false;
+			this.viewport.BackColor = System.Drawing.Color.Black;
+			this.viewport.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.viewport.Location = new System.Drawing.Point(0, 0);
+			this.viewport.Name = "viewport";
+			this.viewport.Size = new System.Drawing.Size(640, 538);
+			this.viewport.TabIndex = 0;
+			this.viewport.VSync = false;
 			// 
-			// Form1
+			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(640, 538);
-			this.Controls.Add(this.glControl1);
-			this.Name = "Form1";
-			this.Text = "Form1";
+			this.Controls.Add(this.viewport);
+			this.Name = "MainForm";
+			this.Text = "CubeView";
 			this.Load += new System.EventHandler(this.Form1_Load);
 			this.ResumeLayout(false);
 
@@ -56,7 +56,7 @@
 
 		#endregion
 
-		private OpenTK.GLControl glControl1;
+		private OpenTK.GLControl viewport;
 	}
 }
 

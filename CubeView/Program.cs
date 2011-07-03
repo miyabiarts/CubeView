@@ -16,7 +16,7 @@ namespace CubeView
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 
-			Form1 form = new Form1();
+			MainForm form = new MainForm();
 			form.Show();
 			while (form.Created)
 			{

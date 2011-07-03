@@ -7,7 +7,9 @@ varying vec4 diffuseColor;
 void main(void)
 {
 	gl_Position = viewProjection * world * vec4(position, 1.0);
+	
 	/*
+	// lower shader version
 	mat3 m;
 	m[0][0] = world[0][0];
 	m[0][1] = world[0][1];

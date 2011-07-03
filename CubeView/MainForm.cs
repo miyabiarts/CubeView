@@ -12,21 +12,21 @@ using OpenTK.Graphics.OpenGL;
 
 namespace CubeView
 {
-	public partial class Form1 : Form
+	public partial class MainForm : Form
 	{
 		int program;
 		Cube cube;
 
 		float lightAngle = 0.0f;
 
-		public Form1()
+		public MainForm()
 		{
 			InitializeComponent();
 		}
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
-			glControl1.MakeCurrent();
+			viewport.MakeCurrent();
 
 			program = CreateShader(Encoding.UTF8.GetString(Properties.Resources.phone_vert), Encoding.UTF8.GetString(Properties.Resources.phone_frag));
 			cube = new Cube(program);
@@ -34,14 +34,14 @@ namespace CubeView
 
 		public void Render()
 		{
-			glControl1.MakeCurrent();
+			viewport.MakeCurrent();
 
 			GL.Enable(EnableCap.DepthTest);
 			GL.Enable(EnableCap.CullFace);
 			GL.FrontFace(FrontFaceDirection.Cw);
 			GL.CullFace(CullFaceMode.Back);
 
-			GL.Viewport(0, 0, glControl1.Width, glControl1.Height);
+			GL.Viewport(0, 0, viewport.Width, viewport.Height);
 			GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
 			GL.UseProgram(program);
@@ -50,7 +50,7 @@ namespace CubeView
 			Vector3 lookAt = new Vector3(0.0f, 0.0f, 0.0f);
 			Vector3 eyeUp = new Vector3(0.0f, 1.0f, 0.0f);
 			Matrix4 viewMatrix = Matrix4.LookAt(eyePos, lookAt, eyeUp);
-			Matrix4 projectionMatrix = Matrix4.CreatePerspectiveFieldOfView((float)System.Math.PI / 4.0f, (float)glControl1.Width / (float)glControl1.Height, 0.1f, 10.0f);
+			Matrix4 projectionMatrix = Matrix4.CreatePerspectiveFieldOfView((float)System.Math.PI / 4.0f, (float)viewport.Width / (float)viewport.Height, 0.1f, 10.0f);
 			Matrix4 viewProjectionMatrix = viewMatrix * projectionMatrix;
 			GL.UniformMatrix4(GL.GetUniformLocation(program, "viewProjection"), false, ref viewProjectionMatrix);
 
@@ -62,10 +62,9 @@ namespace CubeView
 			GL.Uniform3(GL.GetUniformLocation(program, "lightDir"), lightDir);
 			lightAngle += 0.001f;
 
-
 			cube.Render();
 
-			glControl1.SwapBuffers();
+			viewport.SwapBuffers();
 		}
 
 		int CreateShader(string vertexShaderCode, string fragmentShaderCode)
