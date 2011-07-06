@@ -32,6 +32,13 @@ namespace CubeView
 			cube = new Cube(program);
 		}
 
+		private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+		{
+			cube.Dispose();
+
+			GL.DeleteProgram(program);
+		}
+
 		// レンダリング
 		public void Render()
 		{
@@ -101,10 +108,15 @@ namespace CubeView
 			GL.AttachShader(program, vshader);
 			GL.AttachShader(program, fshader);
 
+			GL.DeleteShader(vshader);
+			GL.DeleteShader(fshader);
+
 			GL.LinkProgram(program);
 
 			return program;
 		}
+
+
 
 	}
 }

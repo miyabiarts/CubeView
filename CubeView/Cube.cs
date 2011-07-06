@@ -90,6 +90,13 @@ namespace CubeView
 			GL.VertexAttribPointer(normalLocation, 3, VertexAttribPointerType.Float, true, Vertex.Stride, Vector3.SizeInBytes);
 		}
 
+		public void Dispose()
+		{
+			GL.DeleteBuffers(1, ref vbo);
+			GL.DeleteBuffers(1, ref ebo);
+			GL.DeleteVertexArrays(1, ref vao);
+		}
+
 		// レンダリング
 		public void Render()
 		{

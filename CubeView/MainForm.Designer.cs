@@ -49,6 +49,7 @@
 			this.Controls.Add(this.viewport);
 			this.Name = "MainForm";
 			this.Text = "CubeView";
+			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
 			this.Load += new System.EventHandler(this.Form1_Load);
 			this.ResumeLayout(false);
 
